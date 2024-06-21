@@ -1,4 +1,4 @@
-﻿namespace Dip.Models
+﻿namespace Data.Models
 {
     public class Patients
     {
@@ -9,7 +9,7 @@
         public DateOnly DateOfBirth { get; set; }
         public string Sex { get; set; }
         public string HomeAddres { get; set; }
-        public string PhoneNumber { get; set; }
+        public int PhoneNumber { get; set; }
         public int IdMedicArea { get; set; }
 
 

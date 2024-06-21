@@ -1,4 +1,8 @@
-namespace Dip.Services
+using Business.Services;
+using Data.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace Services
 {
     public class Program
     {
@@ -12,6 +16,10 @@ namespace Dip.Services
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<PatientDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddTransient<IPatientService, PatientService>();
 
             var app = builder.Build();
 

@@ -1,4 +1,4 @@
-﻿namespace Dip.Models
+﻿namespace Data.Models
 {
     public class MedicAreas
     {

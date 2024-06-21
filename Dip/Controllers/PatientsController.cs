@@ -1,33 +1,16 @@
+using Data.Models;
+using Business.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Dip.Controllers
+namespace WebApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class PatientsController : ControllerBase
+    [Route("[controller]/[action]")]
+    public class PatientsController(IPatientService patientService) : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        [HttpGet("GetPatients")]
+        public async Task<List<Patients>> GetPatients() => await patientService.GetPatients();
 
-        private readonly ILogger<PatientsController> _logger;
 
-        public PatientsController(ILogger<PatientsController> logger)
-        {
-            _logger = logger;
-        }
-
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
-        {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
-        }
     }
 }
