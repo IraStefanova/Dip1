@@ -11,6 +11,8 @@ namespace WebApi.Controllers
         [HttpGet("GetPatients")]
         public async Task<List<Patients>> GetPatients() => await patientService.GetPatients();
 
-
+        [HttpGet ("AddPatients")]
+        public async Task CreatePatient(Patients patient) => await patientService.CreatePatient(patient);
+        
     }
 }

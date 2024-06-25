@@ -9,7 +9,7 @@ namespace Business.Services
             context.Patient.Add(patient);
             await context.SaveChangesAsync();
         }
-
+        
         public Task<List<Patients>> GetPatients()
         {
             throw new NotImplementedException();
