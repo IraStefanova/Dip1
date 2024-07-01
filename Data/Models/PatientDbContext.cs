@@ -7,12 +7,9 @@ namespace Data.Models
         public PatientDbContext() : this(new DbContextOptions<PatientDbContext>()) { }
        
         public DbSet<Patients> Patient { get; set; }
-        public DbSet<Doctors> Doctor { get; set; }
-        public DbSet<DoctorCalls> DoctorCalls { get; set; }
-        public DbSet<MedicAreas> MedicAreas { get; set; }
-
-        
-
+        //public DbSet<Doctors> Doctor { get; set; }
+        //public DbSet<DoctorCalls> DoctorCalls { get; set; }
+        //public DbSet<MedicAreas> MedicAreas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

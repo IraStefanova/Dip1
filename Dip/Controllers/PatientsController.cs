@@ -1,6 +1,7 @@
 using Data.Models;
 using Business.Services;
 using Microsoft.AspNetCore.Mvc;
+using Business.Models;
 
 namespace WebApi.Controllers
 {
@@ -9,10 +10,9 @@ namespace WebApi.Controllers
     public class PatientsController(IPatientService patientService) : ControllerBase
     {
         [HttpGet("GetPatients")]
-        public async Task<List<Patients>> GetPatients() => await patientService.GetPatients();
+        public async Task<List<PatientDto>> GetPatients() => await patientService.GetPatients();
 
-        [HttpGet ("AddPatients")]
-        public async Task CreatePatient(Patients patient) => await patientService.CreatePatient(patient);
-        
+        [HttpPost("AddPatients")]
+        public async Task CreatePatient(PatientDto patient) => await patientService.CreatePatient(patient);
     }
 }
