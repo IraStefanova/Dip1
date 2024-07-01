@@ -1,4 +1,6 @@
-﻿namespace Business.Models
+﻿using Data.Models;
+
+namespace Business.Models
 {
     public class PatientDto
     {
@@ -7,7 +9,7 @@
         public string Name { get; set; }
         public string Secname { get; set; }
         public DateOnly DateOfBirth { get; set; }
-        public string Sex { get; set; }
+        public SexEnum Sex { get; set; }
         public string HomeAddres { get; set; }
         public int PhoneNumber { get; set; }
         public int? IdMedicArea { get; set; }

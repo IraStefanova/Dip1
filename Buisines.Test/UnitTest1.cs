@@ -17,7 +17,7 @@ namespace Buisines.Test
                 Name = "Ryan",
                 PhoneNumber = 375231449,
                 Secname = "asdasd",
-                Sex = "male",
+                Sex = SexEnum.Male,
                 Surname = "Gosling"
             };
 
@@ -37,7 +37,7 @@ namespace Buisines.Test
                 Name = "Ryan",
                 PhoneNumber = 375231449,
                 Secname = "asdasd",
-                Sex = "male",
+                Sex = SexEnum.Male,
                 Surname = "Gosling"
             };
 
