@@ -13,7 +13,7 @@ namespace Business.Services
                 throw new Exception("Surname is required");
             if (string.IsNullOrEmpty(patient.Name))
                 throw new Exception("Name is required");
-            if (DateTime.Now.Year - patient.DateOfBirth.Year > 150)
+            if (DateTime.Now.Year - patient.DateOfBirth.Year > ConstValues.MaxAge)
                 throw new Exception("You are too old for this");
 
             var patientEntity = PatientMapper.MapToDb(patient);

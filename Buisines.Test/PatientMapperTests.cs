@@ -3,15 +3,15 @@ using Data.Models;
 
 namespace Buisines.Test
 {
-    public class Tests
+    public class PatientMapperTests
     {
         [Test]
         public void PatientDtoMap_NoException()
         {
             var patientEntity = new Patients
             {
-                Id= 1,
-                DateOfBirth = new DateOnly(2010, 10 ,10),
+                Id = 1,
+                DateOfBirth = new DateOnly(2010, 10, 10),
                 HomeAddres = "asdasd",
                 IdMedicArea = 1,
                 Name = "Ryan",

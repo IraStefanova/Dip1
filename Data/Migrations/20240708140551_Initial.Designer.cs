@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(PatientDbContext))]
-    [Migration("20240627104435_Initial")]
+    [Migration("20240708140551_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -54,9 +54,8 @@ namespace Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Sex")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Sex")
+                        .HasColumnType("int");
 
                     b.Property<string>("Surname")
                         .IsRequired()
