@@ -12,6 +12,7 @@ namespace Business.Services
         public Task<List<DoctorDto>> GetDoctors();
         public Task CreateDoctor(DoctorDto doctor);
         public Task EditDoctor(DoctorDto doctor);
+        public Task DeleteDoctor(DoctorDto doctor);
 
     }
 }

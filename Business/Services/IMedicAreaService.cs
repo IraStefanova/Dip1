@@ -13,5 +13,6 @@ namespace Business.Services
         public Task CreateMedicArea(MedicAreasDto medicArea);
 
         public Task EditMedicArea(MedicAreasDto medicArea);
+        public Task DeleteMedicArea(MedicAreasDto medicArea);
     }
 }

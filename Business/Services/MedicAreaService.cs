@@ -44,5 +44,16 @@ namespace Business.Services
 
             await context.SaveChangesAsync();
         }
+        public async Task DeleteMedicArea(MedicAreasDto medicArea)
+        {
+            var oldValue = await context.MedicAreas.FirstOrDefaultAsync(t => t.Id == medicArea.Id);
+            if (oldValue == null)
+            {
+                throw new Exception("MedicArea not found");
+            }
+
+            context.Remove(oldValue);
+            await context.SaveChangesAsync();
+        }
     }
 }

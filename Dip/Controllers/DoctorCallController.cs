@@ -1,5 +1,6 @@
 ﻿using Business.Models;
 using Business.Services;
+using Data.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
@@ -17,5 +18,8 @@ namespace WebApi.Controllers
         [HttpPut("EditDoctor")]
         public async Task EditDoctorCall(DoctorCallsDto doctorCalls) => await doctorCallService.EditDoctorCall(doctorCalls);
 
+
+        [HttpDelete("DeletePatient")]
+        public async Task DeleteDoctorCall(DoctorCallsDto doctorCalls) => await doctorCallService.DeleteDoctorCall(doctorCalls);
     }
 }

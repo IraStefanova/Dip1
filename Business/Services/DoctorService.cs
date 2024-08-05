@@ -46,6 +46,18 @@ namespace Business.Services
             await context.SaveChangesAsync();
         }
 
+        public async Task DeleteDoctor(DoctorDto doctor)
+        {
+            var oldValue = await context.Doctor.FirstOrDefaultAsync(t => t.Id == doctor.Id);
+            if (oldValue == null)
+            {
+                throw new Exception("Doctor not found");
+            }
+
+            context.Remove(oldValue);
+            await context.SaveChangesAsync();
+
+        }
     }
 
 }

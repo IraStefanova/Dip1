@@ -16,5 +16,8 @@ namespace WebApi.Controllers
 
         [HttpPut("EditDoctor")]
         public async Task EditDoctor(DoctorDto doctor) => await doctorService.EditDoctor(doctor);
+        
+        [HttpDelete("DeletePatient")]
+        public async Task DeleteDoctor(DoctorDto doctor) => await doctorService.DeleteDoctor(doctor);
     }
 }

@@ -16,5 +16,10 @@ namespace WebApi.Controllers
 
         [HttpPut("EditMedicArea")]
         public async Task EditMedicArea(MedicAreasDto medicArea) => await medicAreaService.EditMedicArea(medicArea);
+
+
+        [HttpDelete("DeleteMedicArea")]
+        public async Task DeleteMedicArea(MedicAreasDto medicArea) => await medicAreaService.DeleteMedicArea(medicArea);
+
     }
 }

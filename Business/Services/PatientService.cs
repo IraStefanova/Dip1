@@ -25,7 +25,7 @@ namespace Business.Services
             context.Patient.Add(patientEntity);
             await context.SaveChangesAsync();
         }
-        
+
         public async Task EditPatient(PatientDto patient)
         {
             var oldValue = await context.Patient.FirstOrDefaultAsync(t => t.Id == patient.Id);
@@ -40,6 +40,17 @@ namespace Business.Services
 
             oldValue.Name = patient.Name;
 
+            await context.SaveChangesAsync();
+        }
+        public async Task DeletePatient(PatientDto patient)
+        {
+            var oldValue = await context.Patient.FirstOrDefaultAsync(t => t.Id == patient.Id);
+            if (oldValue == null)
+            {
+                throw new Exception("Patient not found");
+            }
+             
+            context.Remove(oldValue);
             await context.SaveChangesAsync();
         }
     }

@@ -13,5 +13,6 @@ namespace Business.Services
         public Task CreateDoctorCall(DoctorCallsDto doctorCalls);
 
         public Task EditDoctorCall(DoctorCallsDto doctorCalls);
+        public Task DeleteDoctorCall(DoctorCallsDto doctorCalls);
     }
 }
