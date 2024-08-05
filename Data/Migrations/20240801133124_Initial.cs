@@ -12,6 +12,19 @@ namespace Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "MedicAreas",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MedicAreas", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Patient",
                 columns: table => new
                 {
@@ -29,7 +42,18 @@ namespace Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Patient", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Patient_MedicAreas_IdMedicArea",
+                        column: x => x.IdMedicArea,
+                        principalTable: "MedicAreas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Patient_IdMedicArea",
+                table: "Patient",
+                column: "IdMedicArea");
         }
 
         /// <inheritdoc />
@@ -37,6 +61,9 @@ namespace Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Patient");
+
+            migrationBuilder.DropTable(
+                name: "MedicAreas");
         }
     }
 }

@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Data.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Data.Models
+namespace Data.Configurations
 {
     public class PatientConfiguration : IEntityTypeConfiguration<Patients>
     {
@@ -15,7 +16,7 @@ namespace Data.Models
             entity.Property(t => t.Sex).IsRequired();
             entity.Property(t => t.HomeAddres);
             entity.Property(t => t.PhoneNumber).IsRequired();
-            entity.Property(t => t.IdMedicArea).IsRequired();
+            entity.HasOne(t => t.MedicAreas).WithMany().HasForeignKey(t => t.IdMedicArea);
         }
 
     }
