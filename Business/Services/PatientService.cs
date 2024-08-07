@@ -5,8 +5,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Business.Services
 {
+
     public class PatientService(PatientDbContext context) : IPatientService
     {
+        public async Task<List<PatientDto>> GetPatients()
+        {
+            return await context.Patient.Select(x => PatientMapper.MapToDto(x)).ToListAsync();
+        }
         public async Task CreatePatient(PatientDto patient)
         {
             if (string.IsNullOrEmpty(patient.Surname))
@@ -20,10 +25,33 @@ namespace Business.Services
             context.Patient.Add(patientEntity);
             await context.SaveChangesAsync();
         }
-        
-        public async Task<List<PatientDto>> GetPatients()
+
+        public async Task EditPatient(PatientDto patient)
         {
-            return await context.Patient.Select(x => PatientMapper.MapToDto(x)).ToListAsync();
+            var oldValue = await context.Patient.FirstOrDefaultAsync(t => t.Id == patient.Id);
+
+            if (oldValue == null)
+            {
+                throw new Exception("Patient not found");
+            }
+
+            var newValues = PatientMapper.MapToDb(patient);
+            context.Entry(oldValue).CurrentValues.SetValues(newValues);
+
+            oldValue.Name = patient.Name;
+
+            await context.SaveChangesAsync();
+        }
+        public async Task DeletePatient(PatientDto patient)
+        {
+            var oldValue = await context.Patient.FirstOrDefaultAsync(t => t.Id == patient.Id);
+            if (oldValue == null)
+            {
+                throw new Exception("Patient not found");
+            }
+             
+            context.Remove(oldValue);
+            await context.SaveChangesAsync();
         }
     }
 }

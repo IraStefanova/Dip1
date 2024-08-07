@@ -11,5 +11,6 @@
         public string HomeAddres { get; set; }
         public int PhoneNumber { get; set; }
         public int IdMedicArea { get; set; }
+        public MedicAreas MedicAreas { get; set; }
     }
 }

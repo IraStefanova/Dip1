@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(PatientDbContext))]
-    [Migration("20240708140551_Initial")]
+    [Migration("20240801133124_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -24,6 +24,23 @@ namespace Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Data.Models.MedicAreas", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MedicAreas");
+                });
 
             modelBuilder.Entity("Data.Models.Patients", b =>
                 {
@@ -63,7 +80,20 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("IdMedicArea");
+
                     b.ToTable("Patient");
+                });
+
+            modelBuilder.Entity("Data.Models.Patients", b =>
+                {
+                    b.HasOne("Data.Models.MedicAreas", "MedicAreas")
+                        .WithMany()
+                        .HasForeignKey("IdMedicArea")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("MedicAreas");
                 });
 #pragma warning restore 612, 618
         }
