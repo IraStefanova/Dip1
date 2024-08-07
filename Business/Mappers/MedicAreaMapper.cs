@@ -22,7 +22,7 @@ namespace Business.Mappers
         {
             return new MedicAreas
             {
-                Id = medicAreas.Id ?? 0,
+                Id = medicAreas.Id ?? default,
                 Name = medicAreas.Name
             };
         }

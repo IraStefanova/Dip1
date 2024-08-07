@@ -45,6 +45,10 @@ namespace Business.Services
         }
         public async Task DeleteDoctorCall(DoctorCallsDto doctorCalls)
         {
+            if (doctorCalls.Id == null)
+            {
+                throw new Exception("DoctorCall id is required");
+            }
             var oldValue = await context.DoctorCalls.FirstOrDefaultAsync(t => t.Id == doctorCalls.Id);
             if (oldValue == null)
             {

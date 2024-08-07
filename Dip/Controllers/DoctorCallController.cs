@@ -15,11 +15,11 @@ namespace WebApi.Controllers
         [HttpPost("CreateDoctorCall")]
         public async Task CreateDoctorCall(DoctorCallsDto doctorCalls) => await doctorCallService.CreateDoctorCall(doctorCalls);
 
-        [HttpPut("EditDoctor")]
+        [HttpPut("EditDoctorCall")]
         public async Task EditDoctorCall(DoctorCallsDto doctorCalls) => await doctorCallService.EditDoctorCall(doctorCalls);
 
 
-        [HttpDelete("DeletePatient")]
+        [HttpDelete("DeleteDoctorCall")]
         public async Task DeleteDoctorCall(DoctorCallsDto doctorCalls) => await doctorCallService.DeleteDoctorCall(doctorCalls);
     }
 }

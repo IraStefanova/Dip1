@@ -26,7 +26,7 @@ namespace Business.Mappers
         {
             return new DoctorCalls
             {
-                Id = doctorCalls.Id ?? 0,
+                Id = doctorCalls.Id ?? default,
                 IdPatient = doctorCalls.IdPatient ?? 1,
                 IdDoctor = doctorCalls.IdDoctor ?? 2,
                 DateOfCall = doctorCalls.DateOfCall,
