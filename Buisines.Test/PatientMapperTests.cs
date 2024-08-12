@@ -3,6 +3,7 @@ using Data.Models;
 
 namespace Buisines.Test
 {
+    [TestFixture]
     public class PatientMapperTests
     {
         [Test]
