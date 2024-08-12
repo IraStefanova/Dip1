@@ -1,4 +1,5 @@
 using Business.Mappers;
+using Business.Models;
 using Data.Models;
 
 namespace Buisines.Test
@@ -23,7 +24,26 @@ namespace Buisines.Test
             };
 
             var patientDto = PatientMapper.MapToDto(patientEntity);
-            Assert.Pass();
+        }
+
+        [Test]
+        public void PatientDtoToDbMap_NameNotNull()
+        {
+            var patientDto = new PatientDto
+            {
+                Id = 1,
+                DateOfBirth = new DateOnly(2010, 10, 10),
+                HomeAddres = "asdasd",
+                IdMedicArea = 1,
+                Name = "Ryan",
+                PhoneNumber = 375231449,
+                Secname = "asdasd",
+                Sex = SexEnum.Male,
+                Surname = "Gosling"
+            };
+
+            var patientEntity = PatientMapper.MapToDb(patientDto);
+            Assert.That(string.IsNullOrEmpty(patientEntity.Name), Is.False);
         }
 
         [Test]

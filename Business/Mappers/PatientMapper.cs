@@ -24,7 +24,7 @@ namespace Business.Mappers
         {
             return new Patients
             {
-                Id = patients.Id ?? 0,
+                Id = patients.Id ?? default,
                 Name = patients.Name,
                 DateOfBirth = patients.DateOfBirth,
                 HomeAddres = patients.HomeAddres,

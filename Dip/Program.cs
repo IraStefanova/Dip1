@@ -28,6 +28,9 @@ namespace Services
             builder.Services.AddDbContext<PatientDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddTransient<IPatientService, PatientService>();
+            builder.Services.AddTransient<IDoctorService, DoctorService>();
+            builder.Services.AddTransient<IMedicAreaService, MedicAreaService>();
+            builder.Services.AddTransient<IDoctorCallService, DoctorCallService>();
 
             var app = builder.Build();
 

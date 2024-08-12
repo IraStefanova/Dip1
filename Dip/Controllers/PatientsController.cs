@@ -14,5 +14,12 @@ namespace WebApi.Controllers
 
         [HttpPost("AddPatients")]
         public async Task CreatePatient(PatientDto patient) => await patientService.CreatePatient(patient);
+       
+        [HttpPut("EditPatient")]
+        public async Task EditPatient(PatientDto patient) => await patientService.EditPatient(patient);
+
+
+        [HttpDelete("DeletePatient")]
+        public async Task DeletePatient(PatientDto patient) => await patientService.DeletePatient(patient);
     }
 }

@@ -6,5 +6,7 @@ namespace Business.Services
     {
         public Task<List<PatientDto>> GetPatients();
         public Task CreatePatient(PatientDto patient);
+        public Task EditPatient(PatientDto patient);
+        public Task DeletePatient(PatientDto patient);
     }
 }
